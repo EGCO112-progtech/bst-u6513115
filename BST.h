@@ -16,24 +16,24 @@ typedef struct {
 // prototypes
 
 void insertNode(BST *, int);
-/*
-void insertNode_R(TreeNodePtr * t,int value){
-  if(t==NULL){
-   t=new TreeNode;
-         if(t){
-                t->leftPtr=NULL;
-                t->rightPtr=NULL;
-                t->data=value;
-   }
+
+void insertNode_R(TreeNodePtr * t, int value) { //recursion
+  if (*t == NULL) {
+    *t =(TreeNodePtr)malloc(sizeof(struct TreeNode)); // malloc เมื่อเจอตำแหน่งว่าง
+    if (*t) {
+      (*t)->leftPtr = NULL;
+      (*t)->rightPtr = NULL;
+      (*t)->data = value;
+    }
+  } else {
+    if ((*t)->data >= value)
+      insertNode_R(&(*t)->leftPtr, value); // left
+
+    else
+      insertNode_R(&(*t)->rightPtr, value); // right
   }
-  else{
-     if(t->data>=value) //left
-
-     else //right
-
-   }
 }
-*/
+
 void insertNode(BST *b, int value) {
   TreeNodePtr t = b->root, new_node; // tชี้ไปที่ root เสมอ
   int inserted = 0;
@@ -53,7 +53,8 @@ void insertNode(BST *b, int value) {
         if (t->data >= value) {
           /* move/insert to the left*/
           if (t->leftPtr == NULL) {
-            t->leftPtr =new_node; //ถ้าเขียนแค่บรรทัดนี้ มันจะเขียนค่าใหม่ ทับกัน จึงใส่ if ด้วย
+            t->leftPtr =
+                new_node; //ถ้าเขียนแค่บรรทัดนี้ มันจะเขียนค่าใหม่ ทับกัน จึงใส่ if ด้วย
             inserted = 1;
             printf("ใส่ left\n");
           } else {
@@ -64,7 +65,8 @@ void insertNode(BST *b, int value) {
 
         else {
           if (t->rightPtr == NULL) {
-            t->rightPtr =new_node; //ถ้าเขียนแค่บรรทัดนี้ มันจะเขียนค่าใหม่ ทับกัน จึงใส่ if ด้วย
+            t->rightPtr =
+                new_node; //ถ้าเขียนแค่บรรทัดนี้ มันจะเขียนค่าใหม่ ทับกัน จึงใส่ if ด้วย
             inserted = 1;
             printf("ใส่ right\n");
           } else {
@@ -84,9 +86,9 @@ void inOrder(TreeNodePtr treePtr) {
   // if tree is not empty, then traverse
   if (treePtr != NULL) {
 
-    inOrder(treePtr->leftPtr); // Recursion to the left
+    inOrder(treePtr->leftPtr); // Recursion to the left ไปซ้ายสุดก่อน
 
-    printf("%3d", treePtr->data); // print the value
+    printf("%3d", treePtr->data); // print the value แล้วค่อยพิมพ์ตัวเอง
 
     inOrder(treePtr->rightPtr); // Recursion to the right
   }                             // end if
