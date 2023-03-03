@@ -9,8 +9,7 @@ int main( int argc, char** argv )
 
    
 	b.root= NULL;  b.size=0;// tree initially empty
-for ( i = 1; i < argc; ++i ) { 
-      insertNode( &b, atoi(argv[i]));
+for ( i = 1; i < argc; ++i ) { insertNode( &b, atoi(argv[i]));
    //  insertNode_R(&b.root,atoi(argv[i]) );
   } // end for
    // traverse the tree preOrder
