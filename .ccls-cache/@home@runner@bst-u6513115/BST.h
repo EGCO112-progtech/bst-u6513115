@@ -1,5 +1,6 @@
 // An integer binary search tree
-
+#include <stdio.h>
+#include <stdlib.h>
 struct TreeNode {
   struct TreeNode *leftPtr;  // pointer to left subtree
   int data;                  // node value
@@ -117,4 +118,24 @@ void postOrder(TreeNodePtr treePtr) {
 
     printf("%3d", treePtr->data);
   }                             // end if
+} // end
+
+void printtree(TreeNodePtr treePtr,int n ) {
+  // if tree is not empty, then traverse
+  int i;
+
+  if (treePtr != NULL) {
+    
+    printtree(treePtr->rightPtr,n+1); // Recursion to the left ไปซ้ายสุดก่อน
+    for(i=0;i<n;i++)
+      {
+        printf("\t");
+      }
+
+    printf("%3d", treePtr->data); // print the value แล้วค่อยพิมพ์ตัวเอง
+    printf("\n");
+
+    printtree(treePtr->leftPtr,n+1); // Recursion to the right
+  }                             // end if
+  //printf("n=%d\n",n);
 } // end
