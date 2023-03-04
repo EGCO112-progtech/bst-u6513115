@@ -30,6 +30,6 @@ int main(int argc, char **argv) {
    printf("\nThe postnOrder traversal is:\n" );   postOrder( rootPtr );
   */
   printf("\nThe my tree is:\n");
-  printtree(b.root);
+  printtree(b.root,0);
   printf("\n");
 } // end main
